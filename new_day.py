@@ -14,6 +14,8 @@ def main():
     with open("Cargo.toml","w") as f:
         toml.dump(workspace_file,f)
 
+    sp.run(f"cargo new --vcs none {new_member}", shell=True)
+
     day_statement = get_statement(new_day)
     if day_statement:
         with open(f"{new_member}/statement.html","w") as f:
@@ -21,8 +23,6 @@ def main():
     else:
         print("Got nothing yet", file=sys.stderr)
         exit(1)
-
-    sp.run(f"cargo new --vcs none {new_member}", shell=True)
 
     print(f"Good luck on day {new_day}!")
     
